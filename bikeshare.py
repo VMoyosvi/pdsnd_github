@@ -5,6 +5,7 @@ import numpy as np
 CITY_DICT = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
+
 #define a list of months to use for input and and getting the number of the month
 months = ['january', 'february', 'march', 'april', 'may', 'june']
 
@@ -23,7 +24,7 @@ def get_filters():
     city = input('Please enter a city name, chicago, new york city or washington: ')
     city = city.lower()
     
-    while city not in CITY_DATA:
+    while city not in CITY_DICT:
         city = input('Please enter a valid city name i.e chicago, new york city or washington: ')
         city = city.lower()
    
@@ -75,6 +76,7 @@ def load_data(city, month, day):
 
     # filter by month if applicable
     if month != 'all':
+
         # uses the index of the months list to get the corresponding int  
         month = months.index(month) + 1
     
@@ -210,6 +212,7 @@ def main():
         df = load_data(city, month, day)
         
      # Ask the user if they want to view any raw data first
+     #And how many lines 
         view_raw_data = input('Do you want to view some raw data first? yes/no: ')
         if view_raw_data.lower() == 'yes':
             num_rows = 5  
